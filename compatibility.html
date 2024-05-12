@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compatibility Tester</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <h1>Compatibility Tester <i class="fa-solid fa-heart"></i></h1>
+    <input type="text" placeholder="Enter your name" id="n1"><br>
+    <input type="text" placeholder="Enter your name" id="n2"><br>
+    <button onclick="Calc()">Calculate</button>
+    <div id="message"></div>
+    
+</body>
+<script>
+    function Calc(){
+        let n=document.getElementById("n1").value;
+        let nn=document.getElementById("n2").value;
+        let s=n.length;
+        let ss=nn.length;
+        
+        const numerologyValues = {
+            'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 1,
+            'k': 2, 'l': 3, 'm': 4, 'n': 5, 'o': 6, 'p': 7, 'q': 8, 'r': 9, 's': 1, 't': 2,
+            'u': 3, 'v': 4, 'w': 5, 'x': 6, 'y': 7, 'z': 8
+        };
+
+        let str=n.toLowerCase();
+        let str2=nn.toLowerCase();
+        let count=0;
+        let count2=0;
+
+        for(let i=0; i<s; i++){
+            count += numerologyValues[str[i]];
+        }
+
+        for(let i=0; i<ss; i++){
+            count2 += numerologyValues[str2[i]];
+        }
+
+        let first=count.toString();
+        while(first.length>1){
+            let countt=0;
+            for(let j=0; j<first.length; j++){
+                countt += parseInt(first[j]);
+            }
+            first=countt.toString();
+        }
+
+        let second=count2.toString();
+        while(second.length>1){
+            let counttt=0;
+            for(let j=0; j<second.length; j++){
+                counttt += parseInt(second[j]);
+            }
+            second=counttt.toString();
+        }
+
+        let total=first+second;
+        let total2=count+count2;
+        let res=total/total2;
+        console.log(total);
+        console.log(total2);
+        let mes=document.getElementById("message");
+    
+        mes.innerText=Math.round(res*100,2);
+
+    }
+</script>
+</html>
